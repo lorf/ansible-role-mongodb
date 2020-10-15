@@ -6,7 +6,7 @@
 
 - name: Install EPEL release repository
   package:
-    name: epel-release
+    name: "{{ ('OracleLinux' == ansible_distribution) | ternary('oracle-epel-release-el' ~ ansible_distribution_major_version,'epel-release') }}"
     state: present
 
 - name: Add YUM repository
